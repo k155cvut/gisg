@@ -1,8 +1,4 @@
-# Data
-
-[ČÚZK ArcGIS REST server **POLOHOPIS** – stahovací služba](https://ags.cuzk.cz/arcgis/rest/services)
-
-[ČÚZK ArcGIS REST server **VÝŠKOPIS** – stahovací služba](https://ags.cuzk.cz/arcgis2/rest/services)
+# Data a datové zdroje
 
 ## [ArcČR 500](https://www.arcgis.com/home/item.html?id=527cdeb48a8b4456a00ed4b35cbed799 "Odkaz na stažení")
 
@@ -23,6 +19,12 @@ Digitální model reliéfu České republiky 5. generace (DMR 5G) představuje z
 ## [RÚIAN](https://vdp.cuzk.cz/vdp/ruian "Veřejný dálkový přístup k datům RÚIAN")
 
 Registr územní identifikace, adres a nemovitostí (RÚIAN) je jedním ze základních registrů veřejné správy. Je veřejným seznamem, nevede žádné osobní údaje a je jedinečným zdrojem adres nejen pro veřejnou správu. Obsahuje také údaje o územních prvcích, územně evidenčních jednotkách a jejich vzájemných vazbách.
+
+[ČÚZK ArcGIS server **RÚIAN** – stahovací služba](https://ags.cuzk.cz/arcgis/rest/services/RUIAN/MapServer)
+
+[ČÚZK ArcGIS server **POLOHOPIS** – různé stahovací služby](https://ags.cuzk.cz/arcgis/rest/services)
+
+[ČÚZK ArcGIS server **VÝŠKOPIS** – různé stahovací služby](https://ags.cuzk.cz/arcgis2/rest/services)
 
 ## [Data250](https://geoportal.cuzk.cz/(S(htwtba15ms3bpwjajv0aqpxq))/Default.aspx?mode=TextMeta&side=mapy_data250&text=dSady_mapyData250 "Databáze Data250")
 Databáze Data250 je digitální geografický model území České republiky odpovídající přesností a stupněm generalizace měřítku 1:250 000. Data250 je zpracována v rozsahu celého území České republiky, vznikla generalizací původní databáze Data200 v roce 2023.

@@ -3,24 +3,116 @@ icon: material/numeric-3-box
 title: Cvičení 3
 ---
 
-# Prostorové funkce (geoprocessing), spatial join
+# Prostorové (překryvné) funkce. Geoprocessingové nástroje (tools)
 
-## Cíl cvičení
+## Cíl bloku
 
-Seznámení se se základními geoprocessingovými nástroji v GIS v rámci řešení komplexní úlohy.
+Seznámení se se základními geoprocessingovými nástroji v GIS v rámci řešení komplexnější úlohy. Tyto nástroje nalezneme v panelu *Analysis > Tools* a zůstávají otevřené jako panel *Tools* v pravé části okna.
+
+<hr>
+
+**Prostorové (překryvné) funkce** slouží k analýze a kombinaci prostorových dat z různých zdrojů. Umožňují zjišťovat vztahy mezi geografickými objekty a odvozovat z nich nové informace. Tyto funkce pracují s geometrickou složkou dat (body, linie, polygony) a umožňují provádět operace jako průnik, sjednocení, rozdíl nebo ořez geometrických objektů. Výsledkem těchto operací jsou nové prvky s atributy odvozenými z původních datových vrstev. Díky tomu můžeme efektivně analyzovat prostorové vztahy a získávat komplexnější pohled na studované území.
+
+Charakteristickým rysem těchto nástrojů je práce s prostorovými vztahy mezi objekty. Nejde jen o vizuální překrytí, ale o matematické operace s geometrií objektů. Důležité však je, že pracují také s atributy objektů. Výsledné prvky tak mohou mít atributy odvozené z obou vstupních vrstev, což umožňuje komplexní analýzy a vyhodnocování dat. 
 
 ## Základní pojmy
 
 - [**buffer**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/buffer.htm)
 - [**clip**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/clip.htm)
-- [**select**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/select.htm)
 - [**intersect**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/intersect.htm)
-- [**spatial join**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/spatial-join.htm)
+<!-- - [**select**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/select.htm) -->
+<!-- - [**spatial join**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/spatial-join.htm) -->
 - [**erase**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/erase.htm)
 - [**union**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/union.htm)
-- [**remove overlap**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/remove-overlap-multiple.htm)
+<!-- - [**remove overlap**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/remove-overlap-multiple.htm)
 - [**symmetrical difference**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/symmetrical-difference.htm)
-- [**count overlapping features**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/count-overlapping-features.htm)
+- [**count overlapping features**](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/count-overlapping-features.htm)-->
+
+
+### BUFFER
+
+Slouží k vytvoření zóny, která představuje maximální definovanou vzdálenost od prvku. Výsledkem je nová vrstva obsahující plochy, které obklopují původní objekty. 
+
+Příkladem může být:
+
+- **území do 1 km od hranice města**;
+- **plocha v pohraničí do 20 km od státní hranice**;
+- **ochranné pásmo do 50 m od vedení vysokého napětí** apod.
+
+<figure markdown>
+  ![Buffer](../assets/cviceni3/BUFFER_pobocky.png "Buffer")
+  <figcaption>Parametry nástroje BUFFER pro tvorbu obalové zóny (vzdálenost 3 km)</figcaption>
+</figure>
+
+<figure markdown>
+  ![Buffer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/GUID-267CF0D1-DB92-456F-A8FE-F819981F5467-web.png "Buffer")
+  <figcaption>Možnosti nástroje BUFFER s ohledem na geometrický typ a typ sloučení výsledků</figcaption>
+</figure>
+
+
+### CLIP
+
+Slouží k ořezu vstupní vrstvy cílovou vrstvou. Výsledkem je nová vrstva obsahující pouze ty části vstupních objektů, které leží uvnitř ořezové vrstvy. Slouží k extrahování dat z určité oblasti zájmu.
+
+Příkladem může být:
+
+- **území chráněné krajinné oblasti, které je vodní plochou**;
+- **část toku řeky, která protéká určitým krajem**;
+- **podíl ochranného pásma, které leží v lese** apod.
+
+<figure markdown>
+  ![Clip](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/GUID-A639B75A-29D3-4456-A1FE-BB9F5B55F7E5-web.gif "Buffer")
+  <figcaption>Příklad nástroje Clip pro vstupní vrstvu linií a ořezovou vrstvu plochy</figcaption>
+</figure>
+
+<figure markdown>
+  ![Clip features](../assets/cviceni3/CLIP_pobocky.png "Clip")
+  <figcaption>Příklad oříznutí vrstvy poboček aktivními prvky ve vrstvě obcí</figcaption>
+</figure>
+
+### INTERSECT
+
+Je obecnější variantou funkce *Clip* a slouží k vytvoření obecného průniku dvou nebo více vrstev. Výsledkem je nová vrstva obsahující pouze ty části objektů, které se překrývají ve všech vstupních vrstvách a dle charakteru vstupních vrstev mohou výsledkem být body, linie nebo plochy. *Intersect* se používá se k identifikaci oblastí, kde se shodují různé prostorové jevy.
+
+Příkladem může být:
+
+- **křížení silnice s vodním tokem**;
+- **část toku řeky, která protéká určitým krajem**;
+- **prodejny, které leží v určitém okrese** apod.
+
+
+### ERASE
+
+Slouží k vyříznutí plochy, představované cílovou vrstvou, ze vstupní vrstvy. Výsledkem je nová vrstva obsahující pouze ty části vstupních objektů, které *neleží* uvnitř vymazávací vrstvy. Hodí se pro odstranění nežádoucích oblastí z dat.
+
+Příkladem může být:
+
+- **odečtení vodních ploch z plochy obce**;
+- **zjištění plochy území ležící mimo ochranné pásmo**;
+- **zbytková plocha okresu po odečtení 10km pásma podél jeho hranice** apod.
+
+
+### UNION
+
+Funkce sloučí dvě nebo více vstupních vrstev do jedné. Výsledkem je nová vrstva obsahující všechny objekty z obou (či více) vstupních vrstev, včetně překrývajících se částí. Vytvoří se tak kompletní pokrytí všech oblastí zúčastněných vrstev.
+
+Příkladem může být:
+
+- **souhrnná vrstva železničních stanic i autobusových zastávek**;
+- **sloučení ploch obcí do plochy mikroregionu** apod.
+
+
+<hr class="level-1">
+
+Následující přehled ukazuje nejpoužívanější nástroje prostorových funkcí v ArcGIS Pro.
+
+<figure markdown>
+  ![Prostorové funkce](../assets/cviceni3/prost_funkce_srovnani.png "Prostorové funkce")
+  <figcaption>Srovnání vstupních vrstev a výsledků operace pro různé nástroje prostorových funkcí</figcaption>
+</figure>
+
+
+<!--
 
 ## Použité datové podklady
 
@@ -114,27 +206,29 @@ Jakou finanční úsporu jste schopni svým návrhem zajistit, pokud by provoz j
   <figcaption>Pobočky pošty, kterou mohou být zachovány.</figcaption>
 </figure>
 
-**11**. Závěrem lze porovnat, jak rušení poboček České pošty v r. 2023 skutečně proběhlo; přehled naleznete např. [zde](https://www.seznamzpravy.cz/clanek/fakta-ceska-posta-zrusene-pobocky-seznam-mapa-231064). Celý problém je samozřejmě složitější, jelikož finální výběr ovlivnily další faktory jako priorita pobočky (hlavní vs. vedljší), bezbariérovost, apod.
+**11**. Závěrem lze porovnat, jak rušení poboček České pošty v r. 2023 skutečně proběhlo; přehled naleznete např. [zde](https://www.seznamzpravy.cz/clanek/fakta-ceska-posta-zrusene-pobocky-seznam-mapa-231064). Celý problém je samozřejmě složitější, jelikož finální výběr ovlivnily další faktory jako priorita pobočky (hlavní vs. vedlejší), bezbariérovost, apod.
 
-## Úlohy k procvičení
 
-!!! task-fg-color "Úlohy"
+-->
 
-    K řešení následujích úloh použijte datovou sadu [ArcČR
-    500](../../data/#arccr-500) verzi 3.3 dostupnou na disku *S* ve složče
-    ``K155\Public\data\GIS\ArcCR500 3.3``. Zde také najdete souboru s
-    popisem dat ve formátu PDF.
+
+
+## Typické úlohy
+
+!!! task-fg-color "Úlohy k prostorovým funkcím"
+
+    Následující úlohy představují typické zástupce úloh řešitelných pomocí prostorových funkcí:
 
     1. Jaká je výměra (v ha) bažin a rašelinišť ležících v lese. Kolik to
        je procent z celkové výměry bažin a rašelinišť?
        
-    2. Jaká je výměra (v km^2^) území omezeného pouze na ČR do 100 m od dálnic?
+    2. Jaká je výměra (v km^2^) území (omezeného pouze na ČR) do 100 m od dálnic?
 
     3. Kolik obcí v ČR leží celou svojí plochou do vzdálenosti 10 km od
        řeky Labe. Jaký je celkový počet obyvatel těchto obcí?
 
     4. Na kolika místech kříží dálnice, rychlostní silnice či silnice
-       1.třídy s železnicí. Kolik z těchto křížení leží do vzdálenosti 1km
+       1. třídy s železnicí. Kolik z těchto křížení leží do vzdálenosti 1 km
        od nejbližší železniční stanice?
 
     5. Jaká je výměra území (v ha), na kterých leží les či vodní

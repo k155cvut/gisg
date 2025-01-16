@@ -5,12 +5,20 @@ title: Cvičení 2
 
 # Vektorová data, atributové dotazy, prostorové dotazy
 
-## Cíl cvičení
+## Cíl bloku
 
-- Vysvětlení rozdílu mezi vektorovými a rastrovými GIS daty
-- Selekce prvků podle atributů
-- Selekce prvků na základě vzájemných prostorových vztahů
+<!-- - Vysvětlení rozdílu mezi vektorovými a rastrovými GIS daty -->
+- Výběr (selekce) prvků podle atributů
+- Výběr (selekce) prvků na základě vzájemných prostorových vztahů
 
+Funkce atributového a prostorového dotazu jsou k dispozici na kartě Map.
+
+<figure markdown>
+  ![Select](../assets/cviceni2/select_buttons.png "Select by Attributes | Select by Position")
+  <figcaption>Nástroje pro atributový a prostorový dotaz v pásu karet</figcaption>
+</figure>
+
+<!--
 <hr class="level-1">
 
 ## Vektorová a rastrová prostorová data
@@ -41,12 +49,12 @@ title: Cvičení 2
     Vhodné pro jevy měnící se __spojitě__ (např. model terénu, znečištění ovzduší) i __diskrétně__, dále pak __obrazová data__ (např. satelitní)
 
 </div>
-
+-->
 <hr class="level-1">
 
 ## Atributové dotazy
 
-Atributový dotaz (Attribute Query) je metoda výběru/filtrace prvků na základě **hodnot jejich atributů**. Doplňuje tak metodu [interaktivního výběru prvků](/cviceni/cviceni1/#select-tool) z 1. cvičení. Základem je pravidlo pro výběr – tzv. **výraz** (Expression). ArcGIS Pro umožňuje sestavovat výrazy interaktivně pomocí dialogu, nicméně pro využití plného potenciálu výrazů je vhodné využít kód v jazyce _SQL_.
+Atributový dotaz (Attribute Query) je metoda výběru/filtrace prvků na základě **hodnot jejich atributů**. Doplňuje tak metodu interaktivního výběru prvků myší a **používá se velmi často**. Základem je pravidlo pro výběr – tzv. **výraz** (Expression). ArcGIS Pro umožňuje sestavovat výrazy interaktivně pomocí dialogu, je také možné využít kód v jazyce _SQL_.
 <br><br>
 
 **Atributový dotaz** (nad daty v mapě): _:material-tab: Map_{: .outlined_code} → _:material-button-cursor: Select By Attributes_{: .outlined_code} → vyplnit údaje do dialogu nástroje...
@@ -61,7 +69,7 @@ Atributový dotaz (Attribute Query) je metoda výběru/filtrace prvků na zákla
 
 <figcaption markdown>Do pole `Input Rows` je automaticky předvyplněna vrstva vybraná v obsahu mapy </figcaption>
 
-Pomocí přepínátka ![](../assets/cviceni1/img_36.png){: .off-glb style="vertical-align: -20%;margin:0px 5px;"} lze měnit zápis mezi interaktivním dialogovým zadáním a výrazem v jazyce SQL.
+Pomocí přepínače ![](../assets/cviceni1/img_36.png){: .off-glb style="vertical-align: -20%;margin:0px 5px;"} lze měnit zápis mezi interaktivním dialogovým zadáním a výrazem v jazyce SQL.
 
 [Introduction to query expressions](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/write-a-query-in-the-query-builder.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="\_blank"}
 [Construct and modify queries](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/construct-and-modify-queries.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="\_blank"}
@@ -85,7 +93,12 @@ Pomocí přepínátka ![](../assets/cviceni1/img_36.png){: .off-glb style="verti
 
 ## Prostorové dotazy
 
-__Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné vrstvy __na základě vzájemné polohy s prvky druhé vrstvy__. Funkce využívá jako vstup `vrstvu vybíraných prvků`, `vrstvu pro překryvnou analýzu` a `vztah pro překryvnou analýzu`.
+__Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné vrstvy __na základě vzájemné polohy vůči prvkům druhé vrstvy__. Funkce využívá jako vstup:
+<br /> **`vrstvu vybíraných prvků`**, <br />**`vrstvu pro překryvnou analýzu`** a <br />**`vztah pro překryvnou analýzu`**.
+
+Následující interaktivní ukázka představuje vždy výsledek dotazu na základě prostorové podmínky. Máme příklady A až O pro různé prostorové vztahy dat. Vždy se ptáme: **vyber data ze zelené vrstvy na základě prostorového vztahu vůči datům šedé vrstvy**. Oranžový křížek značí střed zelené vrstvy a má význam spíše jen pro vztah *have their center in*.
+
+**Tučně označené** jsou ve výsledcích ty významné vztahy, které budeme nejvíce využívat.
 
 ![](../assets/cviceni2/img_01.svg){ .no-filter }
 ![](../assets/cviceni2/img_02.svg){ .no-filter }
@@ -101,11 +114,10 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table style="width:unset;">
-            <tr><td>Intersect</td><td>A</td></tr>
-            <tr><td>Intersect (DBMS)</td><td>A</td></tr>
-            <tr><td>Contains</td><td>A</td></tr>
+            <tr><td>**Intersect**</td><td>**A**</td></tr>
+            <tr><td>**Contains**</td><td>**A**</td></tr>
             <tr><td>Contains Clementini</td><td>A</td></tr>
-            <tr><td>Within</td><td>A</td></tr>
+            <tr><td>**Within**</td><td>**A**</td></tr>
             <tr><td>Within Clementini</td><td>A</td></tr>
             <tr><td>Are identical to</td><td>A</td></tr>
             <tr><td>Have their center in</td><td>A</td></tr>
@@ -117,13 +129,12 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-            <tr><td>Intersect</td><td>A, C</td></tr>
-            <tr><td>Intersect (DBMS)</td><td>A, C</td></tr>
-            <tr><td>Within</td><td>A, C</td></tr>
-            <tr><td>Completely within</td><td>A</td></tr>
+            <tr><td>**Intersect**</td><td>**A, C**</td></tr>
+            <tr><td>**Within**</td><td>**A, C**</td></tr>
+            <tr><td>**Completely within**</td><td>**A**</td></tr>
             <tr><td>Within Clementini</td><td>A</td></tr>
             <tr><td>Have their center in</td><td>A, C</td></tr>
-            <tr><td>Boundary touches</td><td>C</td></tr>
+            <tr><td>**Boundary touches**</td><td>**C**</td></tr>
         </table>
 
     === "...v překrytu s POLYGONY"
@@ -132,13 +143,12 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C</td></tr>
-          <tr><td>Within</td><td>A, C</td></tr>
-          <tr><td>Completely within</td><td>A</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C**</td></tr>
+          <tr><td>**Within**</td><td>**A, C**</td></tr>
+          <tr><td>**Completely within**</td><td>**A**</td></tr>
           <tr><td>Within Clementini</td><td>A</td></tr>
           <tr><td>Have their center in</td><td>A, C</td></tr>
-          <tr><td>Boundary touches</td><td>C</td></tr>
+          <tr><td>**Boundary touches**</td><td>**C**</td></tr>
         </table>
 
 === "Výběr LINIÍ..."
@@ -150,13 +160,12 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C, D</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C, D</td></tr>
-          <tr><td>Contains</td><td>A, C, D</td></tr>
-          <tr><td>Completely contains</td><td>A, D</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C, D**</td></tr>
+          <tr><td>**Contains**</td><td>**A, C, D**</td></tr>
+          <tr><td>**Completely contains**</td><td>**A, D**</td></tr>
           <tr><td>Contains Clementini</td><td>A, D</td></tr>
           <tr><td>Have their center in</td><td>D</td></tr>
-          <tr><td>Boundary touches</td><td>C</td></tr>
+          <tr><td>**Boundary touches**</td><td>**C**</td></tr>
         </table>
 
     === "...v překrytu s LINIEMI"
@@ -165,16 +174,15 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C, D, E, F, G, H, I, J</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C, D, E, F, G, H, I, J</td></tr>
-          <tr><td>Contains</td><td>G, H</td></tr>
-          <tr><td>Completely contains</td><td>G</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C, D, E, F, G, H, I, J**</td></tr>
+          <tr><td>**Contains**</td><td>**G, H**</td></tr>
+          <tr><td>**Completely contains**</td><td>**G**</td></tr>
           <tr><td>Contains Clementini</td><td>G, H</td></tr>
-          <tr><td>Within</td><td>F, H</td></tr>
-          <tr><td>Completely within</td><td>F</td></tr>
+          <tr><td>**Within**</td><td>**F, H**</td></tr>
+          <tr><td>**Completely within**</td><td>**F**</td></tr>
           <tr><td>Within Clementini</td><td>F, H</td></tr>
           <tr><td>Are identical to</td><td>H</td></tr>
-          <tr><td>Boundary touches</td><td>C, E</td></tr>
+          <tr><td>**Boundary touches**</td><td>**C, E**</td></tr>
           <tr><td>Share a line segment with</td><td>F, G, H, I, J</td></tr>
         </table>
 
@@ -184,12 +192,11 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C, D, E, F, G, H, I, J, K, L, M, N, O</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C, D, E, F, G, H, I, J, K, L, M, N, O</td></tr>
-          <tr><td>Within</td><td>A, D, G, H, I, O</td></tr>
-          <tr><td>Completely within</td><td>A</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C, D, E, F, G, H, I, J, K, L, M, N, O**</td></tr>
+          <tr><td>**Within**</td><td>**A, D, G, H, I, O**</td></tr>
+          <tr><td>**Completely within**</td><td>**A**</td></tr>
           <tr><td>Within Clementini</td><td>A, D, G, H, I</td></tr>
-          <tr><td>Boundary touches</td><td>F, G, H, I, K, L, M, N, O</td></tr>
+          <tr><td>**Boundary touches**</td><td>**F, G, H, I, K, L, M, N, O**</td></tr>
           <tr><td>Share a line segment with</td><td>G, I, J, K, M, O</td></tr>
           <tr><td>Crossed by the outline of</td><td>C, E, H, L, N</td></tr>
           <tr><td>Have their center in</td><td>A, C, D, E, G, H, I, J, O</td></tr>
@@ -204,13 +211,12 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, B</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, B</td></tr>
-          <tr><td>Contains</td><td>A, B</td></tr>
-          <tr><td>Completely contains</td><td>A</td></tr>
+          <tr><td>**Intersect**</td><td>**A, B**</td></tr>
+          <tr><td>**Contains**</td><td>**A, B**</td></tr>
+          <tr><td>**Completely contains**</td><td>**A**</td></tr>
           <tr><td>Contains Clementini</td><td>A</td></tr>
           <tr><td>Have their center in</td><td>A, D</td></tr>
-          <tr><td>Boundary touches</td><td>B</td></tr>
+          <tr><td>**Boundary touches**</td><td>**B**</td></tr>
         </table>
 
     === "...v překrytu s LINIEMI"
@@ -219,12 +225,11 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C, D, E, F, G, H, I, J, K, L, M, N, O</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C, D, E, F, G, H, I, J, K, L, M, N, O</td></tr>
-          <tr><td>Contains</td><td>A, D, G, H, I, O</td></tr>
-          <tr><td>Completely contains</td><td>A</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C, D, E, F, G, H, I, J, K, L, M, N, O**</td></tr>
+          <tr><td>**Contains**</td><td>**A, D, G, H, I, O**</td></tr>
+          <tr><td>**Completely contains**</td><td>**A**</td></tr>
           <tr><td>Contains Clementini</td><td>A, D, G, H, I</td></tr>
-          <tr><td>Boundary touches</td><td>F, G, H, I, K, L, M, N, O</td></tr>
+          <tr><td>**Boundary touches**</td><td>**F, G, H, I, K, L, M, N, O**</td></tr>
           <tr><td>Share a line segment with</td><td>G, I, J, K, M, O</td></tr>
           <tr><td>Crossed by the outline of</td><td>C, E, H, L, N</td></tr>
           <tr><td>Have their center in</td><td>E, I, L</td></tr>
@@ -236,16 +241,15 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
         {: align=center}
 
         <table id="small_table_padding" style="width:unset;">
-          <tr><td>Intersect</td><td>A, C, D, E, F, G, H, I, J, K, M</td></tr>
-          <tr><td>Intersect (DBMS)</td><td>A, C, D, E, F, G, H, I, J, K, M</td></tr>
-          <tr><td>Contains</td><td>C, E, H, M</td></tr>
-          <tr><td>Completely contains</td><td>C</td></tr>
+          <tr><td>**Intersect**</td><td>**A, C, D, E, F, G, H, I, J, K, M**</td></tr>
+          <tr><td>**Contains**</td><td>**C, E, H, M**</td></tr>
+          <tr><td>**Completely contains**</td><td>**C**</td></tr>
           <tr><td>Contains Clementini</td><td>C, E, H, M</td></tr>
-          <tr><td>Within</td><td>F, G, H, M</td></tr>
-          <tr><td>Completely within</td><td>F</td></tr>
+          <tr><td>**Within**</td><td>**F, G, H, M**</td></tr>
+          <tr><td>**Completely within**</td><td>**F**</td></tr>
           <tr><td>Within Clementini</td><td>F, G, H, M</td></tr>
           <tr><td>Are identical to</td><td>H, M</td></tr>
-          <tr><td>Boundary touches</td><td>D, E, G, H, I, J, M</td></tr>
+          <tr><td>**Boundary touches**</td><td>**D, E, G, H, I, J, M**</td></tr>
           <tr><td>Share a line segment with</td><td>D, H, I, M</td></tr>
           <tr><td>Crossed by the outline of</td><td>A, E, G, J, K</td></tr>
           <tr><td>Have their center in</td><td>C, E, F, G, H, K, L</td></tr>
@@ -263,14 +267,11 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
 
 <hr class="level-1">
 
-## Úlohy k procvičení
+## Typické úlohy
 
-!!! task-fg-color "Úlohy k atributovým dotazům"
+!!! task-fg-color "Příklady úloh k atributovým dotazům"
 
-    K řešení následujích úloh použijte datovou sadu [ArcČR
-    500](../../data/#arccr-500) verzi 3.3 dostupnou na disku *S* ve složče
-    ``K155\Public\data\GIS\ArcCR500 3.3``. Zde také najdete souboru s
-    popisem dat ve formátu PDF.
+    Následující úlohy představují typické zástupce úloh řešitelných pomocí atributových dotazů:
 
     1. Kolik je v ČR rybníků?
 
@@ -317,10 +318,7 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
 
 !!! task-fg-color "Úlohy k prostorovým dotazům"
 
-    K řešení následujích úloh použijte datovou sadu [ArcČR
-    500](../../data/#arccr-500) verzi 3.3 dostupnou na disku *S* ve složče
-    ``K155\Public\data\GIS\ArcCR500 3.3``. Zde také najdete souboru s
-    popisem dat ve formátu PDF.
+    Následující úlohy představují typické zástupce úloh řešitelných pomocí prostorových dotazů:
 
     1. Existuje v ČR letiště, jehož reprezentační bod leží v lese? Jak se jmenuje?
 
@@ -334,38 +332,30 @@ __Prostorový dotaz__ (Spatial Query) je metoda výběru/filtrace prvků jedné 
     5. Kolik procent rybníků z celkového počtu leží celou svojí plochou na
        území Jihočeského kraje?
 
-    6. Na kolika mapových listech Základní mapy 1:25 000 leží alespoň
-       částečně okres Litoměřice. Kolik mapových listů potom leží v tomto
-       okresu celou svojí plochou?
-
-    7. Kolik železničních stanic leží v lese a zároveň jejich název
+    6. Kolik železničních stanic leží v lese a zároveň jejich název
        nezačíná na písmeno 'L'?
 
-    8. Které silnice (uveďte jejich číslo) druhé třídy procházejí oblastí
+    7. Které silnice (uveďte jejich číslo) druhé třídy procházejí oblastí
        bažin a rašelinišť?
 
-    9. Jaká je průměrná nadmořská výška výškových kót na území
+    8. Jaká je průměrná nadmořská výška výškových kót na území
        Středočeského kraje?
 
-    10. Kolik vodních ploch leží alespoň částí své plochy ve vzdálenosti
+    9.  Kolik vodních ploch leží alespoň částí své plochy ve vzdálenosti
         do 10 km od poledníku se zeměpisnou délkou 15°?
 
-    11. Kolik obcí se dotýká alespoň jedním liniovým segmentem hranice kraje?
+    10. Kolik obcí se dotýká alespoň jedním liniovým segmentem hranice kraje?
 
-    12. Vyberte katastrální území, ve kterých leží alespoň částečně jedna
+    11. Vyberte katastrální území, ve kterých leží alespoň částečně jedna
         vodní plocha, seskupte tyto území podle kódu NUTS (LAU1). Uveďte
         jaký kód NUTS má největší výměru a z kolika katastrálních území se
         skládá?
 
-    13. Uveďte souřadnice reprezentačního bodu (centroidu) největší vodní
+    12. Uveďte souřadnice reprezentačního bodu (centroidu) největší vodní
         nádrže v Libereckém kraji. O jakou vodní nádrž se jedná?
 
-    14. Kolik obcí leží celou svojí plochou na mapovém listu "Pardubice"
-        ZM 1<nowiki>:</nowiki>25 000. Do kolika ORP tyto obce patří a
-        které to jsou?
 
-    15. Kolik obcí v ČR leží svoji plochou alespoň na dvou mapových
-        listech Základní mapy 1:50 000?
+
 
 <br><br><br><br><br>
 

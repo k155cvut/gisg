@@ -5,7 +5,7 @@ title: Cvičení 1
 
 # Úvod do práce v prostředí ArcGIS, prostorová data, datové zdroje, atributová tabulka
 
-## Cíl cvičení
+## Cíl bloku
 
 - Seznámení s ArcGIS Pro, základní orientace v prostředí programu
 - Přidávání dat do mapy a ovládání mapy
@@ -15,8 +15,8 @@ title: Cvičení 1
 <hr class="level-1">
 
 ## Software pro výuku
-Během většiny výuky bude používán program **ArcGIS Pro** – pokročilý desktopový geografický informační systém (GIS) vyvinutý společností **Esri**. Umožňuje uživatelům **vytvářet**, **editovat**, **analyzovat** a **vizualizovat** geoprostorová data v různých vrstvách, včetně **rastrových** a **vektorových** map, **ortofotomap**, **digitálního výškového modelu** a dalších datasetů.  
-Uživatelé mohou vytvářet a upravovat **atributy** a **geometrii** prvků, provádět pokročilé **analýzy**, vytvářet a **publikovat mapové vrstvy** a vytvářet **interaktivní mapové aplikace**. Program obsahuje také nástroje pro **vizualizaci** dat, tvorbu mapových prezentací a **sdílení výsledků** s ostatními uživateli.  
+Během většiny výuky bude používán program **ArcGIS Pro** – pokročilý desktopový geografický informační systém (GIS) vyvinutý společností **Esri**. Umožňuje uživatelům **vytvářet**, **editovat**, **analyzovat** a **vizualizovat** geoprostorová data v různých vrstvách, včetně **rastrových** a **vektorových** map, **ortofot**, **digitálního výškového modelu** a dalších datasetů.  
+Uživatelé mohou vytvářet a upravovat **atributy** a **geometrii** prvků, provádět pokročilé **analýzy**, vytvářet a **publikovat mapové vrstvy** a vytvářet **interaktivní mapové aplikace**. Program obsahuje také nástroje pro **vizualizaci** dat, tvorbu mapových výstupů a **sdílení výsledků** s ostatními uživateli.  
 
 ![](../assets/cviceni1/agp_logo.png#only-light){ .no-filter .off-glb width=200px}
 ![](../assets/cviceni1/agp_logo2.png#only-dark){ .no-filter .off-glb width=200px}
@@ -24,10 +24,10 @@ Uživatelé mohou vytvářet a upravovat **atributy** a **geometrii** prvků, pr
 
 !!! note-grey "Pozn."
 
-    Vzhledem k vysokým pořizovacím nákladům se systém :simple-arcgis: ArcGIS využívá především ve velkých firmách a orgánech státní správy. V menších podnicích je rozšířenější jeho open source alternativa [:simple-qgis: QGIS](https://www.qgis.org/){: target="_blank"} (tomu bude věnována pozornost v [závěru kurzu](/cviceni/cviceni9/)).
+    Vzhledem k vysokým pořizovacím nákladům se systém :simple-arcgis: ArcGIS využívá především ve velkých firmách a orgánech státní správy. V menších podnicích je rozšířenější jeho open source alternativa [:simple-qgis: QGIS](https://www.qgis.org/){: target="_blank"} (tomu bude věnována pozornost v závěru předmětu).
 
 ## Geoprostorová (GIS) data <span style="font-size:60%;vertical-align:10%;margin-left:15px;font-weight:normal;">(vektorová)</span>
-Geografický informační systém (GIS) využívá obecně jakákoliv data obsahující __prostorovou (polohovou) informaci__. Poloha může být reprezentována nejen kombinací souřadnic (_X + Y_, _šířka + délka_ aj.), ale také _např._{.primary_color .icon-example .no-dec} adresou (o libovolné podrobnosti). Doplňkem k polohové informaci obvykle bývá připojena jakákoliv další informace formou atributů v __atributové tabulce__.
+Geografický informační systém (GIS) využívá obecně jakákoliv data obsahující __prostorovou (polohovou) informaci__. Poloha může být reprezentována nejen kombinací souřadnic (_X + Y_, _šířka + délka_ aj.), ale také např. adresou (o libovolné podrobnosti). Doplňkem k polohové informaci obvykle bývá připojena jakákoliv další informace formou atributů v __atributové tabulce__.
 
 <div class="centered_tab_labels" markdown>
 === "CELÁ MAPA"
@@ -65,10 +65,10 @@ __Ukládání geoprostorových dat__: Data lze ukládat mnoha různými způsoby
 
 - __Shapefile__: formát od spol. _Esri_ s převážně otevřenou specifikací, obsahuje geometrii a vlastnosti (atributy) prostorových prvků, v současnosti asi nejpoužívanější, přestože má mnoho nevýhod a z dnešního pohledu je poněkud zastaralý, jedna z charakteristik formátu je povinné rozdělení do více souborů (`.shp`, `.shx` a `.dbf`, příp. další nepovinné), což přináší obtíže při přesouvání, kopírování apod.
 - __Geodatabáze (GDB)__: nativní datová struktura systému _ArcGIS_ – primární datový formát pro správu a editaci dat, obsahuje kolekci datasetů různých typů (vektor, rastr i jiné), zároveň dokáže uchovávat údaje o datové integritě (domény, subtypy apod.) nebo topologii
-- __GeoJSON__: otevřený standard reprezentující vektorová data a přiřazené atributy, založen na formátu `JSON` a je tedy uživatelsky čitelný a velmi rozšířený
+<!-- - __GeoJSON__: otevřený standard reprezentující vektorová data a přiřazené atributy, založen na formátu `JSON` a je tedy uživatelsky čitelný a velmi rozšířený
 - __GML / KML__: podobně jako GeoJSON – otevřený standard reprezentující vektorová data a přiřazené atributy, založen na formátu `XML`, tedy opět uživatelsky čitelný
 - __GeoPackage (GPKG)__: relativně nový formát _standardu OGC_, podporuje vektorová i rastrová data, překonává mnoho limitů formátu `Shapefile` (např. se jedná o pouze 1 soubor), výchozí formát systému _QGIS_
-- __CSV__: sice není formátem přímo určeným pro geoprostorová data, nicméně často se jako výměnný formát používá, soubor obsahuje pouze atributy, z nichž některé mohou reprezentovat prostorovou složku (souřadnice či adresu) – tu pak GIS software rozpozná a polohově umístí
+- __CSV__: sice není formátem přímo určeným pro geoprostorová data, nicméně často se jako výměnný formát používá, soubor obsahuje pouze atributy, z nichž některé mohou reprezentovat prostorovou složku (souřadnice či adresu) – tu pak GIS software rozpozná a polohově umístí -->
 
 <!-- Ve výčtu chybí některé __rastrové formáty__, těm se bude výuka věnovat v průběhu pozdějších cvičení. -->
 
@@ -76,7 +76,7 @@ __Ukládání geoprostorových dat__: Data lze ukládat mnoha různými způsoby
 
 ## Spuštění a základní orientace v programu
 
-Při spuštění probíhá ověření licence přes příslušnost k organizaci (ČVUT v Praze) – pomocí přihlášení k univerzitnímu účtu. Adresa (URL) pro ČVUT je *ctuprague.maps.arcgis.com* – poté proběhne automatické přesměrování na stránku s univerzitním přihlášením (ve formátu *username@cvut.cz* a heslo to KOSu).
+Při spuštění probíhá ověření licence přes účet organizace (*prijmeni.jmeno_*gspsd).
 
 <div class="process_container">
   <iframe class="video" src="https://www.youtube.com/embed/8nDVpVmxM-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -88,8 +88,9 @@ Uživatelské protředí programu se skládá ze tří základních prvků:
 <div class="table_headerless table_small_padding table_centered" markdown>
 |   |   |
 | - | - |
-| __RIBBON__ | nabídka funkcí programu (prvek shodný s jinými programy, _např._{.primary_color .icon-example .no-dec} Microsoft Word), nabídka se kontextově mění podle akcí uživatele       |
-| __PANE__   | panely a vlastnosti funkcí, mnoho funkcí spouští svůj Pane, přes který se daná funkce ovládá, _např._{.primary_color .icon-example .no-dec} Obsah mapy (Contents), Symbologie |
+| __RIBBON__ | nabídka funkcí programu (prvek shodný s jinými programy, např. Microsoft Word), nabídka se kontextově mění podle akcí uživatele       |
+| __PANE<br />VLEVO__   | zpravidla panel Obsah mapy (Contents) |
+| __PANE<br />VPRAVO__   | panely a vlastnosti funkcí, mnoho funkcí spouští svůj panel, přes který se daná funkce ovládá, např. Symbologie, Editace, Tools |
 | __VIEW__   | okno s mapou (2D) nebo scénou (3D)                                                                                                    |
 </div>  <!-- prazdne radky nelze smazat, Markdown nebere tabulky bez zahlavi, musel jsem vyresit pres css -->
 
@@ -183,9 +184,11 @@ __Připojení geodatabáze do projektu__: V _Catalog Pane_ ( _:material-tab: Vie
 [:octicons-video-16: Video](../assets/cviceni1/03-pripojeni_databaze.mp4){ .md-button .md-button--primary .button_smaller target="_blank"}
 {: .button_array}
 
+Každopádně vždy lze procházet i celou strukturu složek a souborů na počítači přes sekci *Computer*.
+
 ---
 
-__Pořadí vrstev__: V obsahu mapy (_Contents Pane_) se zobrazují všechny vrstvy obsažené v mapě. Zaškrtávacím políčkem vlevo lze jednotlivým vrstvám přepínat viditelnost. Výměnou pořadí vrstev v obsahu se změní jejich pořadí vykreslování v mapě.
+__Pořadí vrstev__: V obsahu mapy (_Contents Pane_) se zobrazují všechny vrstvy obsažené v mapě. Zaškrtávacím políčkem vlevo lze jednotlivým vrstvám zapínat a vypínat viditelnost. Změnou pořadí vrstev v obsahu se změní jejich pořadí vykreslování v mapě.
 
 ![](../assets/cviceni1/img_29.png)
 ![](../assets/cviceni1/arrow.svg){: .off-glb .process_icon}
@@ -201,7 +204,7 @@ __Pořadí vrstev__: V obsahu mapy (_Contents Pane_) se zobrazují všechny vrst
 
 ---
 
-__Nastavení (vlastnosti) mapy__: V _Contents Pane_ (Obsah) přes pravé tl. myši na název mapy vybrat _:material-form-dropdown: Properties_{: .outlined_code}
+__Nastavení vlastností mapy__: V _Contents Pane_ (Obsah) přes pravé tl. myši na název mapy vybrat _:material-form-dropdown: Properties_{: .outlined_code}
 
 ![](../assets/cviceni1/img_21.png)
 ![](../assets/cviceni1/arrow.svg){: .off-glb .process_icon}
@@ -212,18 +215,19 @@ __Nastavení (vlastnosti) mapy__: V _Contents Pane_ (Obsah) přes pravé tl. my�
 
 Pro začátek jsou zajímavé tyto položky:
 
-- Záložka _:material-label-outline: General_{: .outlined_code}
+- Karta _:material-label-outline: General_{: .outlined_code}
 
     - __Name__ (Název mapy)
-    - __Reference scale__ (Referenční měřítko): Zafixuje velikost mapové symbologie pro zadané měřítko. 
+    - __Reference scale__ (Referenční měřítko): Zafixuje velikost mapové symboliky pro zadané měřítko (hodí se při vytváření výstupů tištěných na papír v určitém měřítku)  
     [:material-open-in-new: Map reference scales](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/map-reference-scales.htm){ .md-button .md-button--primary .button_smaller target="_blank" align=right}
     - __Rotation__: Úhel natočení mapy
 
 - Záložka _:material-label-outline: Coordinate systems_{: .outlined_code}
 
     - Informace o souřadnicovém systému zobrazení mapy (zvlášť pro polohu a pro výšku).
-    - __POZOR__, pokud se souř. systém __vložených dat__ liší od systému __mapy__, jsou data __dočasně__ převedena do souř. systému __mapy__. Jedná se však o tzv. __On-the-fly__ transformaci, která je pro kombinaci některých souř. systémů __zjednodušená__ a data na sebe nemusí správně navazovat. Tato situace se __nedoporučuje__, neboť může přinést __nepřesné výsledky__ mapové vizualizace i datových analýz. [__Podrobnější informace__](https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/projection-on-the-fly-and-geographic-transformations)
-    {: style="color:#888;font-size:smaller; line-height:1.1;"}
+    -   !!! warning "Pozor na různé souřadnicové systémy"
+        <br />Pokud se souř. systém __vložených dat__ liší od systému __mapy__, jsou data __dočasně__ převedena do souř. systému __mapy__. Jedná se však o tzv. __on-the-fly__ transformaci, která je pro kombinaci některých souř. systémů __zjednodušená__ a data na sebe nemusí správně navazovat. Tato situace se __nedoporučuje__, neboť může přinést __nepřesné výsledky__ mapové vizualizace i datových analýz. [__Podrobnější informace zde__](https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/projection-on-the-fly-and-geographic-transformations).<br />&nbsp;
+        {: style="color:#888;font-size:smaller; line-height:1.1;"}
 
 [:octicons-video-16: Video](../assets/cviceni1/05-vlastnosti_mapy.mp4){ .md-button .md-button--primary .button_smaller target="_blank"}
 {: .button_array}
@@ -232,11 +236,11 @@ Pro začátek jsou zajímavé tyto položky:
 
 ## Jak data získat
 
-__Ruční tvorba__ (pomocí kreslicích a editačních nástrojů ArcGIS Pro) _součástí budoucích cvičení_{: style="color:#888;margin-left:1rem;"}
+__Ruční tvorba__ (pomocí kreslicích a editačních nástrojů ArcGIS Pro) _součástí budoucích bloků_{: style="color:#888;margin-left:1rem;"}
 
-__Externě získaná data__ (např. zaslaná přes e-mail)
+__Externě získaná data__ (např. zaslaná přes Teams)
 
-__Data online ke stažení__: stažení z libovolného zdroje na lokální disk ve formě souborů, dále shodný přístup jako s lokálně uloženými soubory (viz výše)
+__Data online ke stažení__: stažení z libovolného zdroje na lokální disk ve formě souborů, dále shodný přístup jako s lokálně uloženými soubory (viz výše) – například:
 {: id="data_online" }
 
 [ArcČR](https://www.arcgis.com/home/item.html?id=16fd9804dac04020938452a77c1ed350){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
@@ -246,16 +250,15 @@ __Data online ke stažení__: stažení z libovolného zdroje na lokální disk 
 [geoportál ČSÚ](https://geodata.statistika.cz){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
 {: .button_array}
 
+Ve výše zmíněných případech se jedná o __lokálně uložená data__ (na disku počítače), přístup k nim je standardně přes systémovou cestu, např.:
 
-ve výše zmíněných případech se jedná o __lokálně uložená data__ (na disku počítače), přístup přes systémovou cestu, _např._{.primary_color .icon-example .no-dec}:
-
-`C:\Users\Student1\Documents\Geodatabase.gdb\Layer1`
-`\\data.fsv.cvut.cz\Shares\K155\Public\data\PragueRoads.shp`
+`C:\Pracovni\Geodatabase.gdb\Trida1`
+`T:\ArcGIS\data\Ulice.shp`
 {: align="center" style="font-size:smaller;line-height:1.1; column-gap:50px;" .button_array}
 
 ---
 
-__Připojení streamovaných dat__ _součástí budoucích cvičení_{: style="color:#888;margin-left:1rem;"}
+__Připojení streamovaných dat__ _později_{: style="color:#888;margin-left:1rem;"}
 
 - připojení datových služeb přes URL adresu, nevyžaduje ruční lokální ukládání, existuje více standardů pro poskytování těchto služeb
 {: style="color:#888;font-size:smaller; line-height:1.1;"}
@@ -365,15 +368,26 @@ __Přidat pole / editovat pole / smazat pole__: V pravém horním rohu atr. tabu
 ![](../assets/cviceni1/106.png)
 {: .process_container}
 
-- __Název pole__ (Field Name) má určitá omezení – _např._{.primary_color .icon-example .no-dec} nesmí začínat číslem, některé znaky nelze použít (`–`, `+`, `%`, znak mezery aj.) max. délka je 29 znaků (pozor, délka se může lišit pro různé formáty souboru), nesmí být shodný s názvem jiného pole, není doporučeno používat diakritiku [Define fields in tables](https://pro.arcgis.com/en/pro-app/3.1/help/data/geodatabases/overview/defining-fields-in-tables.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
+- __Název pole__ (Field Name) má určitá omezení – např. nesmí začínat číslem, některé znaky nelze použít (`–`, `+`, `%`, znak mezery aj.) max. délka je 29 znaků (pozor, délka se může lišit pro různé formáty souboru), nesmí být shodný s názvem jiného pole, není doporučeno používat diakritiku [Define fields in tables](https://pro.arcgis.com/en/pro-app/3.1/help/data/geodatabases/overview/defining-fields-in-tables.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
 - __Alias__ se používá jako zástupce pro název pole, má menší omezení a většinou slouží pro převedení názvu pole do "lidské řeči"
-- __Datový typ__ (Data Type) určuje typ dat, který je možné do pole vkládat. Jiný typ je _např._{.primary_color .icon-example .no-dec} `číslo`, `text` nebo `datum`. _Pozor_{.primary_color .icon-exclm .no-dec}, existuje více datových typů pro číslo, datum apod. Liší se primárně počtem bitů alokovaných pro jeden záznam, nejběžnějšími datovými typy jsou `Text` (String), `Short` (celé číslo, 16-bit), `Float` (číslo s des. čárkou, 32-bit) [ArcGIS field data types](https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/arcgis-field-data-types.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
+- __Datový typ__ (Data Type) určuje typ dat, který je možné do pole vkládat. Jiný typ je např. `číslo`, `text` nebo `datum`. _Pozor_{.primary_color .icon-exclm .no-dec}, existuje více datových typů pro číslo, datum apod. Liší se primárně počtem bitů alokovaných pro jeden záznam, nejběžnějšími datovými typy jsou `Text` (String), `Short` (celé číslo, 16-bit), `Float` (číslo s des. čárkou, 32-bit) [ArcGIS field data types](https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/arcgis-field-data-types.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
 
-!!! note-grey "Poznámka"
+    !!! note-grey "Poznámka"
 
-    __Některá pole není možné smazat ani editovat__ (_např._{.primary_color .icon-example .no-dec} `OBJECTID`, `Shape`, `SHAPE_Length`). Jde o tzv. __system managed fields__, mají v datové struktuře speciální význam a jejich hodnoty jsou __automaticky generované__ programem. Pokud tato pole v tabulce překáží, lze je skrýt (pravé tl. na záhlaví atributové tabulky → _:material-button-cursor: Hide Field_{: .outlined_code})
+        __Některá pole není možné smazat ani editovat__ (např. `OBJECTID`, `Shape`, `SHAPE_Length`). Jde o tzv. __systémová pole__, mají v datové struktuře speciální význam a jejich hodnoty jsou __automaticky generované__ programem. Pokud tato pole v tabulce překáží, lze je skrýt (pravé tl. na záhlaví atributové tabulky → _:material-button-cursor: Hide Field_{: .outlined_code})
 
-    __Datový typ existujícího pole nelze měnit__! Existují však osvědčené metody řešení tohoto problému, viz zdroj: [Change the data type of an existing field in ArcGIS Pro](https://support.esri.com/en-us/knowledge-base/how-to-change-the-data-type-of-an-existing-field-in-arc-000023089){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
+        __Datový typ existujícího pole nelze měnit__! Existují však osvědčené metody řešení tohoto problému, viz zdroj: [Change the data type of an existing field in ArcGIS Pro](https://support.esri.com/en-us/knowledge-base/how-to-change-the-data-type-of-an-existing-field-in-arc-000023089){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
+
+**Mohou samozřejmě existovat i data bez popisných atributů** (tedy jen s geometriemi prvků). Každopádně budou však obsahovat tzv. **systémové atributy**, které se pro každý prvek každé vrstvy v geodatabázi generují automaticky a nelze je měnit.
+
+Jedná se o atributy:
+
+- **`OBJECTID`** – **identifikátor prvku**, zpravidla nabývá číelných hodnot 0, 1, 2, ... a přiděluje se každému prvku automaticky;
+- **`SHAPE`** – 'atribut', obsahující samotnou geometrii prvků, nelze ho (v atributové tabulce) přímo editovat;
+- **`SHAPE_Length`** – atribut obsahující **délku prvku** (v případě linií) nebo obvod (plochy);
+- **`SHAPE_Area`** – atribut obsahující **plochu prvku**.
+!!! warning "Jednotky atributů *SHAPE_Length* a *SHAPE_Area* se přebírají z jednotek souř. systému, tedy obvykle metry a metry čtvereční. <br />**Bodové vrstvy** samozřejmě žádný atribut s délkou ani plochou neobsahují."
+
 
 ---
 
@@ -397,11 +411,11 @@ __&nbsp;__{style="color:#c22521;" .icon-exclm .no-dec}__Uložení editací__: na
 
 ## Tabulky bez geometrie
 
-Některá data mohou obsahovat __pouze atributovou tabulku__ (tedy žádné prvky). I přes absenci geometrie se však může jednak o __geoprostorová data__. Prostorová složka může být nahrazena tabulkovými záznamy – _např._{.primary_color .icon-example .no-dec} __bodovými souřadnicemi__ či __adresou__ (slovní reprezentace polohy). Tyto údaje je totiž možné pomocí GIS analýzy __převést na geometrii__.
+Některá data mohou obsahovat __pouze atributovou tabulku__ (tedy žádné geometrické prvky). I přesto se však může jednak o __geoprostorová data__. Prostorová složka může být nahrazena tabulkovými záznamy – např. __bodovými souřadnicemi__ či __adresou__ (slovní reprezentace polohy). Tyto údaje je totiž možné pomocí GIS analýzy __převést na geometrii__.
 
-I kdyby však data prostorovou složku vůbec neměla, mohou v GIS dobře posloužit – přes tzv. __Join__ je lze napojit na jiná data, která už polohové údaje mají (toto téma bude probíráno v další části kurzu).
+I kdyby však data prostorovou složku vůbec neměla, mohou v GIS dobře posloužit – přes tzv. __Join__ je lze napojit na jiná data, která už polohové údaje mají (toto téma bude probíráno později).
 
-Tabulková data lze do ArcGIS Pro načíst jak z `geodatabáze`, tak z externího souboru `CSV` či `XLSX`.
+Tabulková data lze do ArcGIS Pro načíst jak z `geodatabáze`, tak z externího souborů (např.) `CSV`, tabulky Excelu `XLSX` apod.
 
 [Tables](https://pro.arcgis.com/en/pro-app/latest/help/data/tables/tables-in-arcgis-pro.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
 [Open tabular data](https://pro.arcgis.com/en/pro-app/latest/help/data/tables/open-tabular-data.htm){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"}
