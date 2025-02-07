@@ -1,6 +1,6 @@
 ---
 icon: material/numeric-1-box
-title: Cvičení 1
+title: Úvod do ArcGIS
 ---
 
 # Úvod do práce v prostředí ArcGIS, prostorová data, datové zdroje, atributová tabulka

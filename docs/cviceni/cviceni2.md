@@ -1,6 +1,6 @@
 ---
 icon: material/numeric-2-box
-title: Cvičení 2
+title: Vektorová data, atributové dotazy, prostorové dotazy
 ---
 
 # Vektorová data, atributové dotazy, prostorové dotazy

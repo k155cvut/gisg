@@ -2,11 +2,11 @@ site_name: AVT – Geografické informační systémy
 nav:
   - Charakteristika předmětu: index.md
   - Výukové bloky:
-      - Úvod do práce v prostředí ArcGIS, prostorová data, datové zdroje, atributová tabulka: cviceni/cviceni1.md
-      - Vektorová data, atributové dotazy, prostorové dotazy: cviceni/cviceni2.md
+      - ÚVOD DO PRÁCE V ARCGIS, prostorová data, datové zdroje, atributová tabulka: cviceni/cviceni1.md
+      - VEKTOROVÁ DATA, atributové dotazy, prostorové dotazy: cviceni/cviceni2.md
       - Prostorové funkce: cviceni/cviceni3.md
   #    - Práce s externími daty (Excel, CSV), join: cviceni/cviceni4.md
-      - Rastrová data, georeferencování: cviceni/cviceni5.md
+      - RASTROVÁ DATA, georeferencování: cviceni/cviceni5.md
   #    - Vektorizace, tvorba geodatabáze, kontrola topologie: cviceni/cviceni6.md
   #    - ArcGIS Online, webové služby, připojení do ArcGIS Pro: cviceni/cviceni7.md
   #    - Ukázky webové prezentace map, Experience Builder, Instant Apps, Dashboards: cviceni/cviceni8.md
