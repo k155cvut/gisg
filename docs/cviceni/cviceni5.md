@@ -1,5 +1,5 @@
 ---
-icon: material/numeric-5-box
+icon: material/numeric-4-box
 title: Rastrová data, georeferencování
 ---
 
